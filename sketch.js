@@ -5,7 +5,7 @@ const Height = 600;
 
 
 
-const numPoints = 500;
+const numPoints = 1000;
 
 const Point = class {
 	constructor(x = 0, y = 0) {
@@ -25,6 +25,7 @@ let vertex = [];
 for (let i=0; i<numPoints; i++) {
 	vertex.push(Point.NewRandom())
 }
+
 // calculate edge cost
 let edge = [];
 for (let i1=0; i1<vertex.length; i1++) {
@@ -139,7 +140,7 @@ const tourDraw = function() {
 
 
 let temperature = 1;
-const tempDecay = 1/500;
+const tempDecay = 1/1000;
 
 let bestTour = tour;
 let bestCost = tourCost(bestTour);
@@ -192,6 +193,7 @@ const twoOpt = function() {
 };
 
 let iter = 0;
+const step = 1000;
 let running = false;
 function setup() {
 	createCanvas(Width, Height);
@@ -241,10 +243,15 @@ function drawPage() {
 function draw() {
 	if (running) {
 		drawIter();
-		iter++;
-		if (twoOpt()) {
+		let twoOptBool = false;
+		for (let i=0; i<step; i++) {
+			iter++;
+			if (twoOpt()) {
+				twoOptBool = true;
+			}
+		}
+		if (twoOptBool) {
 			drawPage();
 		}
 	}
 }
-
