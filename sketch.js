@@ -5,7 +5,7 @@ const Height = 600;
 
 
 
-const numPoints = 1000;
+const numPoints = 500;
 
 const Point = class {
 	constructor(x = 0, y = 0) {
