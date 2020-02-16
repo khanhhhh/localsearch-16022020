@@ -69,7 +69,7 @@ for (let i1=0; i1<vertex.length; i1++) {
 	for (let i2=i1+1; i2<vertex.length; i2++) {
 		const dist = edge[i1][i2];
 		if (dist < minEdgeCost1) {
-			minEdgeCost = dist;
+			minEdgeCost1 = dist;
 		}
 	}
 }
@@ -91,7 +91,7 @@ for (let i1=0; i1<vertex.length; i1++) {
 		}
 	}
 }
-
+console.log(minEdgeCost1, minEdgeCost2, minEdgeCost3);
 
 const tourEdge = function(tour = []) {
 	let tourEdge = [];
