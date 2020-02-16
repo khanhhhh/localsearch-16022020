@@ -63,12 +63,12 @@ while (visited.length < vertex.length) {
 	visited.push(minI2);
 	mst += minDist;
 }
-// minEdgeCost
-let minEdgeCost = +Infinity;
+// minEdgeCost1
+let minEdgeCost1 = +Infinity;
 for (let i1=0; i1<vertex.length; i1++) {
 	for (let i2=i1+1; i2<vertex.length; i2++) {
 		const dist = edge[i1][i2];
-		if (dist < minEdgeCost) {
+		if (dist < minEdgeCost1) {
 			minEdgeCost = dist;
 		}
 	}
@@ -77,12 +77,20 @@ let minEdgeCost2 = +Infinity;
 for (let i1=0; i1<vertex.length; i1++) {
 	for (let i2=i1+1; i2<vertex.length; i2++) {
 		const dist = edge[i1][i2];
-		if (dist < minEdgeCost2 && dist > minEdgeCost) {
+		if (dist < minEdgeCost2 && dist > minEdgeCost1) {
 			minEdgeCost2 = dist;
 		}
 	}
 }
-
+let minEdgeCost3 = +Infinity;
+for (let i1=0; i1<vertex.length; i1++) {
+	for (let i2=i1+1; i2<vertex.length; i2++) {
+		const dist = edge[i1][i2];
+		if (dist < minEdgeCost3 && dist > minEdgeCost2) {
+			minEdgeCost3 = dist;
+		}
+	}
+}
 
 
 const tourEdge = function(tour = []) {
@@ -224,7 +232,7 @@ function drawPage() {
 	document.getElementById('debuggingText').innerHTML = "";
 	document.getElementById('debuggingText').innerHTML += "Tour cost: " + tourCost(tour) + "</br>";
 	document.getElementById('debuggingText').innerHTML += "Best cost: " + bestCost + "</br>";
-	document.getElementById('debuggingText').innerHTML += "Lowerbound (MST + 2nd cheapest edge): " + (mst + minEdgeCost2) + "</br>";
+	document.getElementById('debuggingText').innerHTML += "Lowerbound (MST + 3nd cheapest edge): " + (mst + minEdgeCost3) + "</br>";
 	document.getElementById('debuggingText').innerHTML += "Upperbound (2*MST): " + (2*mst);
 	background(200, 200, 200);
 	tourDraw();
