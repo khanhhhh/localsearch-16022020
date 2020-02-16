@@ -5,7 +5,7 @@ const Height = 600;
 
 
 
-const numPoints = 500;
+const numPoints = 50;
 
 const Point = class {
 	constructor(x = 0, y = 0) {
@@ -31,68 +31,18 @@ let edge = [];
 for (let i1=0; i1<vertex.length; i1++) {
 	let dist = [];
 	for (let i2=0; i2<vertex.length; i2++) {
-		dist.push(0);
+		dist.push(+Infinity);
 	}
 	edge.push(dist);
 }
 for (let i1=0; i1<vertex.length; i1++) {
-	for (let i2=i1+1; i2<vertex.length; i2++) {
+	for (let i2=i1; i2<vertex.length; i2++) {
 		const dist = Point.Distance(vertex[i1], vertex[i2]);
 		edge[i1][i2] = dist;
 		edge[i2][i1] = dist;
 	}
 }
-
-// mst
-let mst = 0;
-let visited = [0,];
-while (visited.length < vertex.length) {
-	let minDist = +Infinity;
-	let minI2 = -1;
-	for (let i=0; i<visited.length; i++) {
-		const i1 = visited[i];
-		for (let i2=0; i2<vertex.length; i2++) {
-			if (i2 != i1 && !visited.includes(i2)) {
-				const dist = edge[i1][i2];
-				if (dist < minDist) {
-					minDist = dist;
-					minI2 = i2;
-				}
-			}
-		}
-	}
-	visited.push(minI2);
-	mst += minDist;
-}
-// minEdgeCost1
-let minEdgeCost1 = +Infinity;
-for (let i1=0; i1<vertex.length; i1++) {
-	for (let i2=i1+1; i2<vertex.length; i2++) {
-		const dist = edge[i1][i2];
-		if (dist < minEdgeCost1) {
-			minEdgeCost1 = dist;
-		}
-	}
-}
-let minEdgeCost2 = +Infinity;
-for (let i1=0; i1<vertex.length; i1++) {
-	for (let i2=i1+1; i2<vertex.length; i2++) {
-		const dist = edge[i1][i2];
-		if (dist < minEdgeCost2 && dist > minEdgeCost1) {
-			minEdgeCost2 = dist;
-		}
-	}
-}
-let minEdgeCost3 = +Infinity;
-for (let i1=0; i1<vertex.length; i1++) {
-	for (let i2=i1+1; i2<vertex.length; i2++) {
-		const dist = edge[i1][i2];
-		if (dist < minEdgeCost3 && dist > minEdgeCost2) {
-			minEdgeCost3 = dist;
-		}
-	}
-}
-console.log(minEdgeCost1, minEdgeCost2, minEdgeCost3);
+console.log("Graph generated");
 
 const tourEdge = function(tour = []) {
 	let tourEdge = [];
@@ -140,7 +90,7 @@ const tourDraw = function() {
 
 
 let temperature = 1;
-const tempDecay = 1/1000;
+const tempDecay = 1/100;
 
 let bestTour = tour;
 let bestCost = tourCost(bestTour);
@@ -193,7 +143,7 @@ const twoOpt = function() {
 };
 
 let iter = 0;
-const step = 1000;
+const step = 1;
 let running = false;
 function setup() {
 	createCanvas(Width, Height);
@@ -234,8 +184,6 @@ function drawPage() {
 	document.getElementById('debuggingText').innerHTML = "";
 	document.getElementById('debuggingText').innerHTML += "Tour cost: " + tourCost(tour) + "</br>";
 	document.getElementById('debuggingText').innerHTML += "Best cost: " + bestCost + "</br>";
-	document.getElementById('debuggingText').innerHTML += "Lowerbound (MST + 3nd cheapest edge): " + (mst + minEdgeCost3) + "</br>";
-	document.getElementById('debuggingText').innerHTML += "Upperbound (2*MST): " + (2*mst);
 	background(200, 200, 200);
 	tourDraw();
 }
