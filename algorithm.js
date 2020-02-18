@@ -14,22 +14,21 @@ const tourCost = function(tour = []) {
 };
 
 // random tour
-let tour = []; for (let i=0; i<vertex.length; i++) {tour.push(i);}
+let tour = [];
+for (let i=0; i<vertex.length; i++) {
+  tour.push(i);
+}
+
+
 let cost = tourCost(tour);
 
 let bestTour = tour;
 let bestCost = tourCost(bestTour);
 
 let temperature = 1;
-const temperatureDecay = 1/100;
-const resetProb = 0.01;
+const temperatureDecay = 1/1000;
 
 const twoOpt = function() {
-	// random reset
-	if (resetProb > Math.random()) {
-		tour = bestTour;
-		cost = bestCost;
-	}
 	// choose 2 random edges
 	let i11 = -1;
 	let i12 = -1;
@@ -61,13 +60,15 @@ const twoOpt = function() {
 	const exploreCost = (newCost - cost) / cost;
 	if (exploreCost < 0) {
 		newTourAccept = true;
-		tour = newTour;
+    tour = newTour;
+    cost = newCost;
 	} else {
 		const exploreProb = Math.exp(- exploreCost / temperature);
 		if (exploreProb > Math.random()) {
 			console.log("Iter:", iter, " Explore a tour with prob:", exploreProb);
 			newTourAccept = true;
 			tour = newTour;
+      cost = newCost;
 		}
 	}
 	// decay temperature

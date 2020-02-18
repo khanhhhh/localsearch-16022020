@@ -26,7 +26,7 @@ const tourDraw = function() {
 };
 
 let iter = 0;
-const step = 1;
+const step = 100;
 let running = false;
 function setup() {
 	createCanvas(Width, Height);
