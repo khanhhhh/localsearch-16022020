@@ -33,6 +33,7 @@ function setup() {
 	//frameRate(10);
 	drawIter();
 	drawPage();
+	document.getElementById("debuggingReset").style.display = "none";
 }
 
 function debuggingPause() {
@@ -40,17 +41,34 @@ function debuggingPause() {
 		running = false;
 		this.value = "Continue";
 		document.getElementById("debuggingPause").value="Continue";
+		document.getElementById("debuggingReset").style.display = "block";
 	} else {
 		running = true;
 		this.value = "Pause";
 		document.getElementById("debuggingPause").value="Pause";
+		document.getElementById("debuggingReset").style.display = "none";
 	}
 }
+
 function debuggingReset() {
-	tour = bestTour;
+	tour = [];
+	for (let i=0; i<vertex.length; i++) {
+	  tour.push(i);
+	}
+
+	cost = tourCost(tour);
+
+	bestTour = tour;
+	bestCost = tourCost(bestTour);
+
+	temperature = 1;
+
+	iter = 0;
+	running = false;
 	drawIter();
 	drawPage();
 }
+
 
 function drawIter() {
 	document.getElementById('debuggingIter').innerHTML = "";

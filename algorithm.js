@@ -19,7 +19,6 @@ for (let i=0; i<vertex.length; i++) {
   tour.push(i);
 }
 
-
 let cost = tourCost(tour);
 
 let bestTour = tour;
