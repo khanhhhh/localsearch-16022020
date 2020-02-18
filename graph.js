@@ -1,4 +1,4 @@
-const numPoints = 100;
+const numPoints = 300;
 const Point = class {
 	constructor(x = 0, y = 0) {
 		this.x = x;
