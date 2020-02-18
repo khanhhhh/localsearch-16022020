@@ -73,7 +73,7 @@ function debuggingReset() {
 function drawIter() {
 	document.getElementById('debuggingIter').innerHTML = "";
 	document.getElementById('debuggingIter').innerHTML += "Iter: " + iter + "</br>";
-	document.getElementById('debuggingIter').innerHTML += "Temperature: " + temperature + "</br>";
+	document.getElementById('debuggingIter').innerHTML += "Temperature: " + temperature.toExponential() + "</br>";
 }
 
 function drawPage() {
@@ -83,8 +83,8 @@ function drawPage() {
 		bestTour = tour;
 	}
 	document.getElementById('debuggingText').innerHTML = "";
-	document.getElementById('debuggingText').innerHTML += "Tour cost: " + tourCost(tour) + "</br>";
-	document.getElementById('debuggingText').innerHTML += "Best cost: " + bestCost + "</br>";
+	document.getElementById('debuggingText').innerHTML += "Tour cost: " + tourCost(tour).toFixed(4) + "</br>";
+	document.getElementById('debuggingText').innerHTML += "Best cost: " + bestCost.toFixed(4) + "</br>";
 	background(200, 200, 200);
 	tourDraw();
 }
