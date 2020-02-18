@@ -6,9 +6,15 @@
     <script src="https://cdn.jsdelivr.net/npm/p5@0.10.2/lib/p5.js"></script>
   </head>
   <body>
-    <div id="debuggingIter"></div>
-    <div id="debuggingText"></div>
-    <input type="button" id="debuggingPause" onclick="debuggingPause()" value="Start"></button> 
-    <input type="button" id="debuggingReset" onclick="debuggingReset()" value="Reset" style="display: none"></button> 
+    <table  class="fixed"><col width="400px" /><col width="200px" />
+      <tr>
+      <td align="left"><div id="debuggingIter"></div></td>
+      <td align="left"><input type="button" id="debuggingPause" onclick="debuggingPause()" value="Start"></button></td>
+      </tr>
+      <tr>
+      <td align="left"><div id="debuggingText"></div></td>
+      <td align="left"><input type="button" id="debuggingReset" onclick="debuggingReset()" value="Reset" style="display: none"></button> </td>
+      </tr>
+    </table>
   </body>
 </html>

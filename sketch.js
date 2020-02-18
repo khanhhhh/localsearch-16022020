@@ -72,7 +72,7 @@ function debuggingReset() {
 
 function drawIter() {
 	document.getElementById('debuggingIter').innerHTML = "";
-	document.getElementById('debuggingIter').innerHTML += "Iter: " + iter + " ";
+	document.getElementById('debuggingIter').innerHTML += "Iter: " + iter + "</br>";
 	document.getElementById('debuggingIter').innerHTML += "Temperature: " + temperature + "</br>";
 }
 
