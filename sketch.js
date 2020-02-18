@@ -36,16 +36,16 @@ function setup() {
 }
 
 function debuggingPause() {
-	if (this.value === "Pause") {
+	let pause = document.getElementById("debuggingPause");
+	let reset = document.getElementById("debuggingReset");
+	if (pause.value === "Pause") {
 		running = false;
-		this.value = "Continue";
-		document.getElementById("debuggingPause").value="Continue";
-		document.getElementById("debuggingReset").style.display = "block";
+		pause.value = "Continue";
+		reset.style.display = "block";
 	} else {
 		running = true;
-		this.value = "Pause";
-		document.getElementById("debuggingPause").value="Pause";
-		document.getElementById("debuggingReset").style.display = "none";
+		pause.value = "Pause";
+		reset.style.display = "none";
 	}
 }
 
