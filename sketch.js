@@ -15,9 +15,9 @@ const edgeDraw = function(tourEdge = [0, 0]) {
 const pointDraw = function(p = new Point()) {
 	fill(color(255,255,255));
 	stroke(255, 0, 0);
-	strokeWeight(1);
+	strokeWeight(2);
 	//noStroke();
-	circle(Width * p.x, Height * p.y, 5);
+	circle(Width * p.x, Height * p.y, 7);
 };
 
 const tourDraw = function() {
