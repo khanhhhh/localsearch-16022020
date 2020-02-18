@@ -33,7 +33,6 @@ function setup() {
 	//frameRate(10);
 	drawIter();
 	drawPage();
-	document.getElementById("debuggingReset").style.display = "none";
 }
 
 function debuggingPause() {
@@ -67,6 +66,7 @@ function debuggingReset() {
 	running = false;
 	drawIter();
 	drawPage();
+	document.getElementById("debuggingPause").value="Start";
 }
 
 
