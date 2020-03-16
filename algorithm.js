@@ -25,7 +25,7 @@ let bestTour = tour;
 let bestCost = tourCost(bestTour);
 
 let temperature = 1;
-const temperatureDecay = 1/3000;
+let temperatureDecay = 1/100000;
 
 const twoOpt = function() {
 	// choose 2 random edges

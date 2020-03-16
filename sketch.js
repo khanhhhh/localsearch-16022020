@@ -26,7 +26,7 @@ const tourDraw = function() {
 };
 
 let iter = 0;
-const step = 100;
+const step = 1000;
 let running = false;
 function setup() {
 	createCanvas(Width, Height);
@@ -43,6 +43,7 @@ function debuggingPause() {
 		pause.value = "Continue";
 		reset.style.display = "block";
 	} else {
+		temperatureDecay = parseFloat(document.getElementById("temperatureDecay").value);
 		running = true;
 		pause.value = "Pause";
 		reset.style.display = "none";
