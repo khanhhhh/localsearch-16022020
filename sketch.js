@@ -1,8 +1,9 @@
-// height of the canvas
-const Width = 600;
-// width of the canvas
-const Height = 600;
+const Pad = 30;
 
+// innerHeight of the canvas
+const Width = window.innerHeight - 2*Pad;
+// width of the canvas
+const Height = window.innerHeight - 2*Pad;
 
 const edgeDraw = function(tourEdge = [0, 0]) {
 	const p0 = vertex[tourEdge[0]];
@@ -29,7 +30,9 @@ let iter = 0;
 const step = 1000;
 let running = false;
 function setup() {
-	createCanvas(Width, Height);
+	let canvas = createCanvas(Width, Height);
+	canvas.position(window.innerWidth - window.innerHeight, Pad);
+
 	//frameRate(10);
 	drawIter();
 	drawPage();
